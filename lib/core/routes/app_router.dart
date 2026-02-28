@@ -1,14 +1,13 @@
-
-
 import 'package:task/core/core.dart';
 import 'package:task/features/splash/views/screen/splash_screen.dart';
+import 'package:task/features/welcome/views/screen/welcome_screen.dart';
 
 class Routes {
   Routes._();
 
   static const splash = '/splash';
   static const home = '/home';
-  static const filter = '/filter';
+  static const welcome = '/welcome';
 }
 
 class AppRouter {
@@ -30,6 +29,11 @@ class AppRouter {
         path: Routes.splash,
         pageBuilder: (context, state) =>
             _slidePage(state: state, child: const SplashScreen()),
+      ),
+      GoRoute(
+        path: Routes.welcome,
+        pageBuilder: (context, state) =>
+            _bottomToTopSlidePage(state: state, child: const WelcomeScreen()),
       ),
     ],
   );

@@ -1,13 +1,7 @@
-
-
-
-import 'package:flutter/material.dart';
-import 'package:task/core/constants/app_colors.dart';
 import 'package:task/core/core.dart';
 
 class AppTextStyles {
-  static const String fontFamily = 'Montserrat';
-
+  static const String fontFamily = 'Inter';
 
   /// Light theme text (lazy to allow ScreenUtil to initialize first)
   static TextTheme get lightTextTheme => TextTheme(

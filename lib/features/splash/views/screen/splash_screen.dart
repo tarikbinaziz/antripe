@@ -1,4 +1,5 @@
 import 'package:task/core/core.dart';
+import 'package:task/core/routes/app_router.dart';
 import 'package:task/gen/assets.gen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -31,11 +32,19 @@ class _SplashScreenState extends State<SplashScreen>
     );
 
     _scaleAnimation = Tween<double>(
-      begin: 0.85,
+      begin: 0.75,
       end: 1,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic));
-
     _controller.forward();
+    _navigateNext();
+  }
+
+  Future<void> _navigateNext() async {
+    await Future.delayed(const Duration(milliseconds: 2000));
+
+    if (!mounted) return;
+
+    context.go(Routes.welcome);
   }
 
   @override
