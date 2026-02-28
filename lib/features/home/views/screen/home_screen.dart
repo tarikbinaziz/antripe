@@ -45,15 +45,40 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 Widget _buildHeader(WidgetRef ref, ContactState state) {
   final notifier = ref.read(contactControllerProvider.notifier);
 
+  /// 🔎 SEARCH MODE
+  if (state.isSearching) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      child: TextField(
+        autofocus: true,
+        onChanged: notifier.search,
+        decoration: InputDecoration(
+          hintText: "Search contact...",
+          prefixIcon: const Icon(Icons.search),
+          suffixIcon: IconButton(
+            icon: const Icon(Icons.close),
+            onPressed: notifier.stopSearch,
+          ),
+          filled: true,
+          fillColor: Colors.grey.shade100,
+          contentPadding: const EdgeInsets.symmetric(vertical: 0),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide.none,
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// 🧾 NORMAL HEADER
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        /// Left Tabs
         Row(
           children: [
-            /// CONTACT TAB
             GestureDetector(
               onTap: () => notifier.changeTab(ContactTab.contact),
               child: Column(
@@ -80,10 +105,7 @@ Widget _buildHeader(WidgetRef ref, ContactState state) {
                 ],
               ),
             ),
-
             const SizedBox(width: 20),
-
-            /// RECENT TAB
             GestureDetector(
               onTap: () => notifier.changeTab(ContactTab.recent),
               child: Column(
@@ -113,19 +135,14 @@ Widget _buildHeader(WidgetRef ref, ContactState state) {
           ],
         ),
 
-        /// Right Icons
         Row(
           children: [
             IconButton(
-              onPressed: () {
-                // TODO: open search field
-              },
+              onPressed: notifier.startSearch,
               icon: const Icon(Icons.search),
             ),
             IconButton(
-              onPressed: () {
-                // TODO: open filter/menu
-              },
+              onPressed: () {},
               icon: const Icon(Icons.menu),
             ),
           ],

@@ -13,6 +13,7 @@ class ContactState {
   final String? selectedCategoryId;
   final String searchQuery;
   final ContactTab tab;
+  final bool isSearching;
 
   ContactState({
     required this.isLoading,
@@ -22,6 +23,7 @@ class ContactState {
     this.selectedCategoryId,
     this.searchQuery = '',
     this.tab = ContactTab.contact,
+    this.isSearching = false,
   });
 
   ContactState copyWith({
@@ -33,6 +35,7 @@ class ContactState {
     String? searchQuery,
     ContactTab? tab,
     bool clearCategory = false,
+    bool? isSearching,
   }) {
     return ContactState(
       isLoading: isLoading ?? this.isLoading,
@@ -44,6 +47,7 @@ class ContactState {
           ? null
           : (selectedCategoryId ?? this.selectedCategoryId),
       searchQuery: searchQuery ?? this.searchQuery,
+      isSearching: isSearching ?? this.isSearching,
     );
   }
 
@@ -99,19 +103,25 @@ class ContactNotifier extends StateNotifier<ContactState> {
 
   void selectCategory(String? id) async {
     if (id == "all") {
- 
       state = state.copyWith(clearCategory: true);
 
       /// 🔁 call API again for ALL contacts
       await fetchContacts();
     } else {
-   
       state = state.copyWith(selectedCategoryId: id);
     }
   }
 
   void search(String query) {
     state = state.copyWith(searchQuery: query);
+  }
+
+  void startSearch() {
+    state = state.copyWith(isSearching: true);
+  }
+
+  void stopSearch() {
+    state = state.copyWith(isSearching: false, searchQuery: '');
   }
 
   void changeTab(ContactTab tab) {
