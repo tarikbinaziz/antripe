@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/legacy.dart';
-import 'package:task/features/home/model/contacts_api_response_model/category.dart';
-import 'package:task/features/home/model/contacts_api_response_model/contact.dart';
-import 'package:task/features/home/repository/home_repository.dart';
+import 'package:task/features/contact/model/contacts_api_response_model/category.dart';
+import 'package:task/features/contact/model/contacts_api_response_model/contact.dart';
+import 'package:task/features/contact/repository/contact_repository.dart';
 
 enum ContactTab { contact, recent }
 
@@ -67,7 +67,9 @@ class ContactState {
           ? contact.status?.toLowerCase() == "active"
           : true;
 
-      return matchesCategory && matchesSearch && matchesStatus;
+      final isEmpty = contact.isEmpty!;
+
+      return matchesCategory && matchesSearch && matchesStatus && !isEmpty;
     }).toList();
   }
 }

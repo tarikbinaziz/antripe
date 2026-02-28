@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:task/features/home/riverpod/home_notifier.dart';
-import 'package:task/features/home/views/widgets/shimmer.dart';
+import 'package:task/features/contact/riverpod/contact_notifier.dart';
+import 'package:task/features/contact/views/widgets/shimmer.dart';
 
 class ContactsList extends StatelessWidget {
   final ContactState state;

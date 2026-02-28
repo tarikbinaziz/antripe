@@ -1,9 +1,9 @@
 import 'package:task/core/core.dart';
-import 'package:task/features/home/riverpod/home_provider.dart';
-import 'package:task/features/home/views/widgets/add_contact_bottom_sheet.dart';
-import 'package:task/features/home/views/widgets/categories_widget.dart';
-import 'package:task/features/home/views/widgets/contact_header.dart';
-import 'package:task/features/home/views/widgets/contact_list.dart';
+import 'package:task/features/contact/riverpod/contact_provider.dart';
+import 'package:task/features/contact/views/widgets/add_contact_bottom_sheet.dart';
+import 'package:task/features/contact/views/widgets/categories_widget.dart';
+import 'package:task/features/contact/views/widgets/contact_header.dart';
+import 'package:task/features/contact/views/widgets/contact_list.dart';
 import 'package:task/gen/assets.gen.dart';
 
 class ContactScreen extends ConsumerStatefulWidget {

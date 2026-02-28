@@ -44,7 +44,7 @@ Implements feature-rich UI, state management, and simulated API integration.
 - Smooth animations using `flutter_animate`
 - Reusable components & clean typography
 
-## API Simulation
+## API call
 
 - Uses `dio` & `pretty_dio_logger` for HTTP request simulation
 - Placeholder/mock endpoints for testing dynamic data

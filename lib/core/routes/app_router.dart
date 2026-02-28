@@ -1,5 +1,5 @@
 import 'package:task/core/core.dart';
-import 'package:task/features/home/views/screen/contact_screen.dart';
+import 'package:task/features/contact/views/screen/contact_screen.dart';
 import 'package:task/features/splash/views/screen/splash_screen.dart';
 import 'package:task/features/welcome/views/screen/welcome_screen.dart';
 
