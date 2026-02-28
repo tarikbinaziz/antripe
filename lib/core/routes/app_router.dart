@@ -1,4 +1,5 @@
 import 'package:task/core/core.dart';
+import 'package:task/features/home/views/screen/home_screen.dart';
 import 'package:task/features/splash/views/screen/splash_screen.dart';
 import 'package:task/features/welcome/views/screen/welcome_screen.dart';
 
@@ -34,6 +35,11 @@ class AppRouter {
         path: Routes.welcome,
         pageBuilder: (context, state) =>
             _bottomToTopSlidePage(state: state, child: const WelcomeScreen()),
+      ),
+      GoRoute(
+        path: Routes.home,
+        pageBuilder: (context, state) =>
+            _slidePage(state: state, child: const HomeScreen()),
       ),
     ],
   );

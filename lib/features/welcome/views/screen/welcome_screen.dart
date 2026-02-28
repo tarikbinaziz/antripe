@@ -1,4 +1,5 @@
 import 'package:task/core/core.dart';
+import 'package:task/core/routes/app_router.dart';
 import 'package:task/gen/assets.gen.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -70,7 +71,9 @@ class WelcomeScreen extends StatelessWidget {
                         ),
                         elevation: 0,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        context.push(Routes.home);
+                      },
                       child: Text(
                         "Getting Started",
                         style: context.textTheme.bodyMedium?.copyWith(

@@ -6,16 +6,12 @@ Future<bool> showExitAppDialog(BuildContext context) async {
     barrierDismissible: false,
     builder: (context) {
       return AlertDialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: const Text(
           "Exit App",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        content: const Text(
-          "Are you sure you want to exit the app?",
-        ),
+        content: const Text("Are you sure you want to exit the app?"),
         actionsPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         actions: [
           TextButton(

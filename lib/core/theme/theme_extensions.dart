@@ -1,9 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:task/core/constants/app_colors.dart';
-
-
 
 /// TextTheme Extension
 extension TextThemingExtension on BuildContext {
