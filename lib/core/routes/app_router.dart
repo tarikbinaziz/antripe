@@ -1,5 +1,5 @@
 import 'package:task/core/core.dart';
-import 'package:task/features/home/views/screen/home_screen.dart';
+import 'package:task/features/home/views/screen/contact_screen.dart';
 import 'package:task/features/splash/views/screen/splash_screen.dart';
 import 'package:task/features/welcome/views/screen/welcome_screen.dart';
 
@@ -7,8 +7,8 @@ class Routes {
   Routes._();
 
   static const splash = '/splash';
-  static const home = '/home';
   static const welcome = '/welcome';
+  static const home = '/home';
 }
 
 class AppRouter {
@@ -39,7 +39,7 @@ class AppRouter {
       GoRoute(
         path: Routes.home,
         pageBuilder: (context, state) =>
-            _slidePage(state: state, child: const HomeScreen()),
+            _slidePage(state: state, child: const ContactScreen()),
       ),
     ],
   );

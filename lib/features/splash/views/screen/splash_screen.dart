@@ -63,10 +63,10 @@ class _SplashScreenState extends State<SplashScreen>
             top: -60,
             right: -60,
             child: Container(
-              width: 160,
-              height: 160,
+              width: 160.w,
+              height: 160.w,
               decoration: const BoxDecoration(
-                color: Color(0xFF1F6E54),
+                color: AppColors.primaryColor,
                 shape: BoxShape.circle,
               ),
             ),
@@ -76,10 +76,10 @@ class _SplashScreenState extends State<SplashScreen>
             bottom: -120,
             left: -120,
             child: Container(
-              width: 260,
-              height: 260,
+              width: 260.w,
+              height: 260.w,
               decoration: const BoxDecoration(
-                color: Color(0xFF1F6E54),
+                color: AppColors.primaryColor,
                 shape: BoxShape.circle,
               ),
             ),

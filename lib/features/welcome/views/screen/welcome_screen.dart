@@ -8,7 +8,6 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF1F5F4),
       body: Column(
         children: [
           Expanded(
@@ -27,11 +26,11 @@ class WelcomeScreen extends StatelessWidget {
             child: Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-              decoration: const BoxDecoration(
-                color: Color(0xFF1F6E54),
+              decoration: BoxDecoration(
+                color: AppColors.primaryColor,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(28),
-                  topRight: Radius.circular(28),
+                  topLeft: Radius.circular(28.w),
+                  topRight: Radius.circular(28.w),
                 ),
               ),
               child: Column(
@@ -65,7 +64,7 @@ class WelcomeScreen extends StatelessWidget {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
-                        foregroundColor: const Color(0xFF1F6E54),
+                        foregroundColor: AppColors.primaryColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
