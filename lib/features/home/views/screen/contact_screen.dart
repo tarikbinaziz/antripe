@@ -42,7 +42,7 @@ class _HomeScreenState extends ConsumerState<ContactScreen> {
           children: [
             ContactsHeader(state: state),
             CategoriesWidget(state: state),
-            Expanded(child: ContactsList(state: state)),
+            ContactsList(state: state),
           ],
         ),
       ),
