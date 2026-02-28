@@ -1,8 +1,5 @@
-
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
-import 'package:task/core/navigation/app_router.dart';
+import 'package:task/core/core.dart';
+import 'package:task/gen/assets.gen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,9 +11,8 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-
-  late Animation<double> _logoScale;
-  late Animation<double> _logoFade;
+  late Animation<double> _fadeAnimation;
+  late Animation<double> _scaleAnimation;
 
   @override
   void initState() {
@@ -24,36 +20,22 @@ class _SplashScreenState extends State<SplashScreen>
 
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1800),
+      duration: const Duration(milliseconds: 1600),
     );
 
-    // Logo scale animation
-    _logoScale = Tween<double>(begin: 0.6, end: 1.0).animate(
+    _fadeAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
         parent: _controller,
-        curve: const Interval(0.0, 0.6, curve: Curves.easeOutBack),
+        curve: const Interval(0.0, 0.8, curve: Curves.easeOut),
       ),
     );
 
-    // Logo fade animation
-    _logoFade = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: const Interval(0.0, 0.5, curve: Curves.easeIn),
-      ),
-    );
+    _scaleAnimation = Tween<double>(
+      begin: 0.85,
+      end: 1,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic));
 
     _controller.forward();
-
-    _navigateNext();
-  }
-
-  Future<void> _navigateNext() async {
-    await Future.delayed(const Duration(milliseconds: 2500));
-
-    if (!mounted) return;
-
-    context.go(Routes.home);
   }
 
   @override
@@ -65,18 +47,55 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
-        width: double.infinity,
-
-        child: Center(
-          child: FadeTransition(
-            opacity: _logoFade,
-            child: ScaleTransition(
-              scale: _logoScale,
-              child: Image.asset(Assets.pngs.logo.path, width: 220.w),
+      backgroundColor: const Color(0xFFF1F5F4),
+      body: Stack(
+        children: [
+          Positioned(
+            top: -60,
+            right: -60,
+            child: Container(
+              width: 160,
+              height: 160,
+              decoration: const BoxDecoration(
+                color: Color(0xFF1F6E54),
+                shape: BoxShape.circle,
+              ),
             ),
           ),
-        ),
+
+          Positioned(
+            bottom: -120,
+            left: -120,
+            child: Container(
+              width: 260,
+              height: 260,
+              decoration: const BoxDecoration(
+                color: Color(0xFF1F6E54),
+                shape: BoxShape.circle,
+              ),
+            ),
+          ),
+
+          // Center Content
+          Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                FadeTransition(
+                  opacity: _fadeAnimation,
+                  child: ScaleTransition(
+                    scale: _scaleAnimation,
+                    child: Image.asset(
+                      Assets.pngs.logo.path,
+                      height: 161.h,
+                      width: 172.w,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
