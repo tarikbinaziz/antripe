@@ -2,16 +2,10 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   // Brand
-  static const Color primaryColor = Color(0xFF4785fd);
-  static const Color primaryLight = Color(0xFFEEF2FF);
-  static const Color primary200 = Color(0xFFBFD5FE);
-  static const Color primary300 = Color(0xFF93B4FD);
-  static const Color primary700 = Color(0xFF274FC2);
-  static const Color primary900 = Color(0xFF1A337A);
+  static const Color primaryColor = Color(0xFF098268);
+
   static const Color secondaryColor = Color(0xFF348CEF);
-  static const Color homeLinearColor1 = Color(0xFFFFBEBE);
-  static const Color homeLinearColor2 = Color(0xFFFFF4F4);
-  static const Color onboardingLinearColor1 = Color(0xFF772D4B);
+
   static const Color cardBg = Color(0xFFF9FAFB);
   static const Color textBorder = Color(0xFF797979);
 

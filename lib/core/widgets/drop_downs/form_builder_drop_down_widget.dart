@@ -1,7 +1,4 @@
-import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:task/core/constants/app_colors.dart';
 import 'package:task/core/core.dart';
-import 'package:task/core/theme/theme_extensions.dart';
 
 class CustomFormBuilderDropdown extends StatelessWidget {
   const CustomFormBuilderDropdown({
@@ -97,8 +94,8 @@ InputDecoration textfieldInputDecoration({
 }) {
   final bool isDark = context.isDarkMode;
   final Color resolvedFillColor =
-      fillColor ?? (isDark ? AppColors.surfaceDarkElevated : AppColors.gray);
-  final Color borderColor = isDark ? AppColors.borderDark : AppColors.gray;
+      fillColor ?? (isDark ? AppColors.surfaceDarkElevated : AppColors.white);
+  final Color borderColor = isDark ? AppColors.borderDark : AppColors.border;
   final Color hintColor =
       hintTextStyle?.color ?? (isDark ? AppColors.mutedDark : AppColors.hint);
 
@@ -110,7 +107,7 @@ InputDecoration textfieldInputDecoration({
       style:
           hintTextStyle ??
           context.textTheme.bodyMedium!.copyWith(
-            fontSize: 14.sp,
+            fontSize: 16.sp,
             fontWeight: FontWeight.w400,
             color: hintColor,
           ),
@@ -127,23 +124,23 @@ InputDecoration textfieldInputDecoration({
     prefixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
     suffixIcon: suffixIcon,
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30.r),
+      borderRadius: BorderRadius.circular(4.r),
       borderSide: BorderSide(color: borderColor),
     ),
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30.r),
+      borderRadius: BorderRadius.circular(4.r),
       borderSide: BorderSide(color: borderColor),
     ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30.r),
+      borderRadius: BorderRadius.circular(4.r),
       borderSide: BorderSide(color: AppColors.primaryColor, width: 1.3.w),
     ),
     errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30.r),
+      borderRadius: BorderRadius.circular(4.r),
       borderSide: BorderSide(color: AppColors.error),
     ),
     focusedErrorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30.r),
+      borderRadius: BorderRadius.circular(4.r),
       borderSide: BorderSide(color: AppColors.error),
     ),
   );

@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:task/core/core.dart';
 import 'package:task/features/home/riverpod/home_notifier.dart';
 import 'package:task/features/home/riverpod/home_provider.dart';
+import 'package:task/features/home/views/widgets/add_contact_bottom_sheet.dart';
+import 'package:task/gen/assets.gen.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -24,10 +26,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final state = ref.watch(contactControllerProvider);
 
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color(0xFF1F6E54),
-        onPressed: () {},
-        child: const Icon(Icons.add),
+      floatingActionButton: GestureDetector(
+        onTap: () {
+          showAddContactSheet(context);
+        },
+        child: Image.asset(
+          width: 64.w,
+          height: 64.w,
+          Assets.pngs.floatingIcon.path,
+        ),
       ),
       body: SafeArea(
         child: Column(
@@ -66,6 +73,10 @@ Widget _buildHeader(WidgetRef ref, ContactState state) {
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide.none,
           ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: AppColors.primaryColor, width: 1.2),
+          ),
         ),
       ),
     );
@@ -99,7 +110,7 @@ Widget _buildHeader(WidgetRef ref, ContactState state) {
                     height: 2,
                     width: 50,
                     color: state.tab == ContactTab.contact
-                        ? const Color(0xFF1F6E54)
+                        ? AppColors.primaryColor
                         : Colors.transparent,
                   ),
                 ],
@@ -126,7 +137,7 @@ Widget _buildHeader(WidgetRef ref, ContactState state) {
                     height: 2,
                     width: 50,
                     color: state.tab == ContactTab.recent
-                        ? const Color(0xFF1F6E54)
+                        ? AppColors.primaryColor
                         : Colors.transparent,
                   ),
                 ],
@@ -141,10 +152,7 @@ Widget _buildHeader(WidgetRef ref, ContactState state) {
               onPressed: notifier.startSearch,
               icon: const Icon(Icons.search),
             ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.menu),
-            ),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
           ],
         ),
       ],
@@ -161,7 +169,7 @@ Widget _buildCategories(ContactState state) {
           scrollDirection: Axis.horizontal,
           padding: const EdgeInsets.symmetric(horizontal: 16),
           itemCount: state.categories.length,
-          separatorBuilder: (_, __) => const SizedBox(width: 16),
+          separatorBuilder: (_, w) => const SizedBox(width: 16),
           itemBuilder: (context, index) {
             final category = state.categories[index];
 
@@ -183,7 +191,7 @@ Widget _buildCategories(ContactState state) {
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: isSelected
-                            ? const Color(0xFF1F6E54)
+                            ? AppColors.primaryColor
                             : Colors.grey.shade200,
                         width: 2,
                       ),
@@ -194,8 +202,8 @@ Widget _buildCategories(ContactState state) {
                         fit: BoxFit.cover,
                         imageUrl:
                             "https://randomuser.me/api/portraits/men/${index + 1}.jpg",
-                        width: 40.w,
-                        height: 40.w,
+                        width: 56.w,
+                        height: 56.w,
                       ),
                     ),
                   ),
@@ -205,7 +213,7 @@ Widget _buildCategories(ContactState state) {
                     style: TextStyle(
                       fontSize: 13,
                       color: isSelected
-                          ? const Color(0xFF1F6E54)
+                          ? AppColors.primaryColor
                           : Colors.black54,
                     ),
                   ),
@@ -235,15 +243,20 @@ Widget _buildBody(ContactState state) {
   return ListView.separated(
     padding: const EdgeInsets.all(16),
     itemCount: state.filteredContacts.length,
-    separatorBuilder: (_, __) => const Divider(),
+    separatorBuilder: (_, __) => const Divider(color: Colors.black12),
     itemBuilder: (context, index) {
       final contact = state.filteredContacts[index];
 
       return ListTile(
-        leading: const CircleAvatar(),
+        leading: ClipOval(
+          child: CachedNetworkImage(
+            imageUrl: contact.avatarUrl ?? "",
+            width: 48.w,
+            height: 48.w,
+          ),
+        ),
         title: Text(contact.name ?? ""),
         subtitle: Text(contact.phone ?? ""),
-        trailing: const Icon(Icons.more_vert),
       );
     },
   );

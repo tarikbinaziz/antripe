@@ -1,8 +1,5 @@
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:task/core/constants/app_colors.dart';
 import 'package:task/core/core.dart';
-import 'package:task/core/theme/theme_extensions.dart';
 import 'package:task/core/widgets/drop_downs/form_builder_drop_down_widget.dart';
 
 class CustomTextFieldWithHeading extends StatelessWidget {
@@ -85,7 +82,7 @@ class CustomTextFieldWithHeading extends StatelessWidget {
           keyboardType: keyboardType ?? TextInputType.name,
           cursorColor: AppColors.primaryColor,
           style: context.textTheme.bodyLarge!.copyWith(
-            fontSize: 15.sp,
+            fontSize: 16.sp,
             fontWeight: FontWeight.w600,
           ),
           decoration: textfieldInputDecoration(

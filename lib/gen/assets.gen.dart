@@ -14,11 +14,15 @@ import 'package:flutter/widgets.dart';
 class $AssetsPngsGen {
   const $AssetsPngsGen();
 
+  /// File path: assets/pngs/Floating Icon.png
+  AssetGenImage get floatingIcon =>
+      const AssetGenImage('assets/pngs/Floating Icon.png');
+
   /// File path: assets/pngs/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/pngs/logo.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [logo];
+  List<AssetGenImage> get values => [floatingIcon, logo];
 }
 
 class $AssetsSvgsGen {

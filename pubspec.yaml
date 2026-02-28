@@ -65,6 +65,7 @@ dependencies:
   # Networking
   dio: ^5.9.1
   pretty_dio_logger: ^1.4.0
+  country_code_picker: ^3.4.1
 
 dev_dependencies:
   flutter_test:
